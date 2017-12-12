@@ -6,7 +6,7 @@ This library is a wrapper for the api exposed by Luno.com.
 This is created and maintained in my spare time and is still a work in progress.
 
 1. Luno Api Details [Link] (https://www.luno.com/en/api)
-2. Nuget Package [Link] ()
+2. Nuget Package [Link] (https://www.nuget.org/packages/LunoIntegration/)
 
 ## REST Supported Operations
 
