@@ -5,16 +5,16 @@
     public class LiveUpdate
     {
         [JsonProperty("sequence")]
-        public string Sequence { get; set; }
+        public double Sequence { get; set; }
 
         [JsonProperty("trade_updates")]
-        public double TradeUpdates { get; set; }
+        public TradeUpdate[] TradeUpdates { get; set; }
 
         [JsonProperty("create_update")]
-        public double CreateUpdate { get; set; }
+        public CreateUpdate CreateUpdate { get; set; }
 
         [JsonProperty("delete_update")]
-        public double DeleteUpdate { get; set; }
+        public DeleteUpdate DeleteUpdate { get; set; }
 
         [JsonProperty("timestamp")]
         public double TimeStamp { get; set; }
