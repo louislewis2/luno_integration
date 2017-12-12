@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LunoIntegration", "src\LunoIntegration\LunoIntegration.csproj", "{BD1E8DE5-8072-4BEE-9085-8793A568F32E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9394F5B8-4F89-454A-BCD4-BB5E68C73578}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{53710CEB-CCE3-44EF-9ECD-664D7D5D1051}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LunoIntegration.Test", "test\LunoIntegration.Test\LunoIntegration.Test.csproj", "{7C04E6FB-9CBC-485D-B601-7318FC6683C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3A97E3C3-F648-4831-8122-1CE1CB0F6DA8}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD1E8DE5-8072-4BEE-9085-8793A568F32E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD1E8DE5-8072-4BEE-9085-8793A568F32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD1E8DE5-8072-4BEE-9085-8793A568F32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD1E8DE5-8072-4BEE-9085-8793A568F32E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C04E6FB-9CBC-485D-B601-7318FC6683C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C04E6FB-9CBC-485D-B601-7318FC6683C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C04E6FB-9CBC-485D-B601-7318FC6683C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C04E6FB-9CBC-485D-B601-7318FC6683C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD1E8DE5-8072-4BEE-9085-8793A568F32E} = {9394F5B8-4F89-454A-BCD4-BB5E68C73578}
+		{7C04E6FB-9CBC-485D-B601-7318FC6683C1} = {53710CEB-CCE3-44EF-9ECD-664D7D5D1051}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF6AB94A-AE2B-4093-9F8A-010BD3A505DD}
+	EndGlobalSection
+EndGlobal
