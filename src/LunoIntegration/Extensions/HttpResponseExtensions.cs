@@ -11,6 +11,7 @@
 
             var stream = response.Content.ReadAsStringAsync().Result;
             var item = JsonConvert.DeserializeObject<T>(stream, settings);
+
             return item;
         }
     }

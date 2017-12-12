@@ -4,13 +4,14 @@
     using System.Net;
     using System.Text;
     using System.Net.Http;
+    using System.Threading;
+    using System.Net.WebSockets;
     using System.Threading.Tasks;
     using System.Net.Http.Headers;
-    using System.Net.WebSockets;
-    using System.Threading;
-    using LunoIntegration.Models;
+
     using Newtonsoft.Json;
-    using System.Diagnostics;
+
+    using LunoIntegration.Models;
 
     public class LunoClient
     {
