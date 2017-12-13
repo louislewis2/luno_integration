@@ -13,7 +13,7 @@
         public double TimeStamp { get; set; }
 
         [JsonProperty("price")]
-        public string Price { get; set; }
+        public double Price { get; set; }
 
         [JsonProperty("is_buy")]
         public bool IsBuy { get; set; }

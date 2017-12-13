@@ -13,13 +13,13 @@
         public string Asset { get; set; }
 
         [JsonProperty("balance")]
-        public string Balance { get; set; }
+        public double Balance { get; set; }
 
         [JsonProperty("reserved")]
-        public string Reserved { get; set; }
+        public double Reserved { get; set; }
 
         [JsonProperty("unconfirmed")]
-        public string Unconfirmed { get; set; }
+        public double Unconfirmed { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

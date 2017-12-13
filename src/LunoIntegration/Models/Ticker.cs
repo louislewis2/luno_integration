@@ -7,19 +7,19 @@
         #region Properties
 
         [JsonProperty("ask")]
-        public string Ask { get; set; }
+        public double Ask { get; set; }
 
         [JsonProperty("timestamp")]
         public double TimeStamp { get; set; }
 
         [JsonProperty("bid")]
-        public string Bid { get; set; }
+        public double Bid { get; set; }
 
         [JsonProperty("rolling_24_hour_volume")]
-        public string RollingDailyVolume { get; set; }
+        public double RollingDailyVolume { get; set; }
 
         [JsonProperty("last_trade")]
-        public string LastTrade { get; set; }
+        public double LastTrade { get; set; }
 
         [JsonProperty("pair")]
         public string Pair { get; set; }

@@ -7,10 +7,10 @@
         #region Properties
 
         [JsonProperty("volume")]
-        public string Volume { get; set; }
+        public double Volume { get; set; }
 
         [JsonProperty("price")]
-        public string Price { get; set; }
+        public double Price { get; set; }
 
         #endregion Properties
     }
