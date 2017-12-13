@@ -15,7 +15,7 @@
 
         #region Methods
 
-        public static async Task<TradeResponse> GetTradesAsync(this LunoClient lunoClient, string pair, int? since = null)
+        public static async Task<TradeResponse> GetTradesAsync(this LunoClient lunoClient, string pair, double? since = null)
         {
             string queryString = since.HasValue ? $"?pair={pair}&since={since}" : $"?pair={pair}";
 
