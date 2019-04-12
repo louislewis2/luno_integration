@@ -25,11 +25,6 @@ This is created and maintained in my spare time and is still a work in progress.
 
 Live stream is currently under development, but is working in a basic form
 
-## Donations
-
-Found this library useful or just feeling generous?
-Feel free to send a donation 1M1CJD58Aj71CjHJ3ngccwXEpEgaEhwJTz
-
 ## Running Tests
 
 In the test project, find TestBase.cs enter your api key and secret.
