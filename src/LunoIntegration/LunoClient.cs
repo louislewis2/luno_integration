@@ -63,7 +63,9 @@
                 return requestResult.Deserialize<T>();
             }
 
-            throw new Exception(requestResult.ReasonPhrase);
+            var message = requestResult.TryReadContent();
+
+            throw string.IsNullOrWhiteSpace(message) ?  new Exception(requestResult.ReasonPhrase) : new Exception(requestResult.ReasonPhrase, new Exception(message));
         }
 
         public async Task ConnectLive(string pair, Action<string> orderBookReceivedAction, Action<string> orderUpdateReceivedAction, Action disconnectedAction, CancellationToken cancellationToken = default(CancellationToken))

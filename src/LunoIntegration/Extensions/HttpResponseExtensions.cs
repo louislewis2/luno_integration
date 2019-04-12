@@ -14,5 +14,18 @@
 
             return item;
         }
+
+        public static string TryReadContent(this HttpResponseMessage response)
+        {
+            string message = string.Empty;
+
+            try
+            {
+                message = response.Content.ReadAsStringAsync().Result;
+            }
+            catch { }
+
+            return message;
+        }
     }
 }
