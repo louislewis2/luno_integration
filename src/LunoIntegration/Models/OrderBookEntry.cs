@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class Order
+    public class OrderBookEntry
     {
         #region Properties
 

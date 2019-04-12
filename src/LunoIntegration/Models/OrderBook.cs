@@ -8,9 +8,9 @@
         public double TimeStamp { get; set; }
 
         [JsonProperty("bids")]
-        public Order[] Bids { get; set; }
+        public OrderBookEntry[] Bids { get; set; }
 
         [JsonProperty("asks")]
-        public Order[] Asks { get; set; }
+        public OrderBookEntry[] Asks { get; set; }
     }
 }
