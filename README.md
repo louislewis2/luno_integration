@@ -20,6 +20,11 @@ This is created and maintained in my spare time and is still a work in progress.
 | Balances | Done | NA |
 | Transactions | Done | NA |
 | Pending Transactions | Done | NA |
+| List Orders | Done | NA |
+| Limit Orders | NA | Done |
+| Market Orders | NA | Done |
+| Get Order | Done | NA |
+| Stop Order | NA | Done |
 
 ## Live Stream
 

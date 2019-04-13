@@ -10,6 +10,7 @@
     using System.Net.Http.Headers;
 
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
 
     using LunoIntegration.Models;
 
@@ -44,6 +45,31 @@
 
         #region Methods
 
+        public async Task<T> PostAsync<T>(string resourceUrl, object data) where T : class
+        {
+            if (string.IsNullOrWhiteSpace(resourceUrl))
+            {
+                throw new ArgumentException("Resource Url Cannot Be Emtpty");
+            }
+
+            var content = data == null ? new StringContent("", Encoding.UTF8, "application/json") : new StringContent(SerializeToJson(data), Encoding.UTF8, "application/json");
+
+            this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                Convert.ToBase64String(ASCIIEncoding.ASCII.GetBytes($"{this.key}:{this.secret}")));
+            this.httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Luno_Integration_Client", "0.0.1"));
+            this.httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var requestResult = await this.httpClient.PostAsync(resourceUrl, content);
+            if (requestResult.StatusCode == HttpStatusCode.OK)
+            {
+                return requestResult.Deserialize<T>();
+            }
+
+            var message = requestResult.TryReadContent();
+
+            throw string.IsNullOrWhiteSpace(message) ? new Exception(requestResult.ReasonPhrase) : new Exception(requestResult.ReasonPhrase, new Exception(message));
+        }
+
         public async Task<T> GetAsync<T>(string resourceUrl, string queryString) where T : class
         {
             if (string.IsNullOrWhiteSpace(resourceUrl))
@@ -65,7 +91,7 @@
 
             var message = requestResult.TryReadContent();
 
-            throw string.IsNullOrWhiteSpace(message) ?  new Exception(requestResult.ReasonPhrase) : new Exception(requestResult.ReasonPhrase, new Exception(message));
+            throw string.IsNullOrWhiteSpace(message) ? new Exception(requestResult.ReasonPhrase) : new Exception(requestResult.ReasonPhrase, new Exception(message));
         }
 
         public async Task ConnectLive(string pair, Action<string> orderBookReceivedAction, Action<string> orderUpdateReceivedAction, Action disconnectedAction, CancellationToken cancellationToken = default(CancellationToken))
@@ -119,13 +145,13 @@
 
                     if (result.EndOfMessage)
                     {
-                        ProcessMessage(stringResult);
+                        this.ProcessMessage(stringResult);
                     }
                 }
             }
             catch (Exception)
             {
-                Disconnected();
+                this.Disconnected();
             }
             finally
             {
@@ -174,6 +200,13 @@
         private void Disconnected()
         {
             this.disconnectedAction?.Invoke();
+        }
+
+        private static string SerializeToJson<T>(T obj)
+        {
+            var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver(), NullValueHandling = NullValueHandling.Ignore };
+
+            return JsonConvert.SerializeObject(obj, settings);
         }
 
         #endregion Private Methods
