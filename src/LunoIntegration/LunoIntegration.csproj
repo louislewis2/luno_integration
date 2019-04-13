@@ -1,18 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>An integration library for the Luno.com Exchange API</Description>
     <Authors>Louis Lewis</Authors>
-    <Version>0.0.6</Version>
+    <Version>0.0.7-alpha</Version>
     <PackageTags>luno; bitx;</PackageTags>
     <PackageProjectUrl>https://github.com/louislewis2/luno_integration</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/louislewis2/luno_integration/blob/master/License.md</PackageLicenseUrl>
-    <PackageReleaseNotes>Correct since parameter type</PackageReleaseNotes>
+    <PackageReleaseNotes>Cater For Various Order Endpoints</PackageReleaseNotes>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
 </Project>
