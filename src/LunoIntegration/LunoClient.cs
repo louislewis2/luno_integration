@@ -8,6 +8,7 @@
     using System.Net.WebSockets;
     using System.Threading.Tasks;
     using System.Net.Http.Headers;
+    using System.Collections.Generic;
 
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
@@ -52,14 +53,21 @@
                 throw new ArgumentException("Resource Url Cannot Be Emtpty");
             }
 
-            var content = data == null ? new StringContent("", Encoding.UTF8, "application/json") : new StringContent(SerializeToJson(data), Encoding.UTF8, "application/json");
+            if (data == null)
+            {
+                throw new ArgumentException("Data Cannot Be Null");
+            }
+
+            var finalResourceUrl = string.Format("api/{0}{1}", this.version, resourceUrl);
+
+            var content = this.ConvertToContent(data);
 
             this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
                 Convert.ToBase64String(ASCIIEncoding.ASCII.GetBytes($"{this.key}:{this.secret}")));
             this.httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Luno_Integration_Client", "0.0.1"));
             this.httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var requestResult = await this.httpClient.PostAsync(resourceUrl, content);
+            var requestResult = await this.httpClient.PostAsync(finalResourceUrl, content);
             if (requestResult.StatusCode == HttpStatusCode.OK)
             {
                 return requestResult.Deserialize<T>();
@@ -202,11 +210,25 @@
             this.disconnectedAction?.Invoke();
         }
 
-        private static string SerializeToJson<T>(T obj)
+        private FormUrlEncodedContent ConvertToContent(object obj)
         {
-            var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver(), NullValueHandling = NullValueHandling.Ignore };
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(), NullValueHandling = NullValueHandling.Ignore
+            };
 
-            return JsonConvert.SerializeObject(obj, settings);
+            var objectJson = JsonConvert.SerializeObject(obj, settings);
+
+            var dictionary = new Dictionary<string, string>();
+
+            var objectDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(objectJson);
+
+            foreach (var pair in objectDictionary)
+            {
+                dictionary.Add(key: pair.Key, value: pair.Value);
+            }
+
+            return new FormUrlEncodedContent(dictionary);
         }
 
         #endregion Private Methods

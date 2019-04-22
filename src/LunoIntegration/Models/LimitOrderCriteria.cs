@@ -1,6 +1,7 @@
 ﻿namespace LunoIntegration.Models
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     using LunoIntegration.Enums;
 
@@ -12,13 +13,14 @@
         public string Pair { get; set; }
 
         [JsonProperty(PropertyName = "type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public OrderTypes Type { get; set; }
 
         [JsonProperty(PropertyName = "volume")]
-        public string Volume { get; set; }
+        public decimal Volume { get; set; }
 
         [JsonProperty(PropertyName = "price")]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
 
         [JsonProperty(PropertyName = "base_account_id")]
         public string BaseAccountId { get; set; }
