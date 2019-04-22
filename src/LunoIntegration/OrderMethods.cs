@@ -16,7 +16,7 @@
 
         public static async Task<Order> GetOrderAsync(this LunoClient lunoClient, string orderId)
         {
-            return await lunoClient.GetAsync<Order>(ResourceBase, orderId);
+            return await lunoClient.GetAsync<Order>(resourceUrl: ResourceBase, queryString: $"/{orderId}");
         }
 
         #endregion Methods
