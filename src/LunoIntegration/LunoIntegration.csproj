@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>An integration library for the Luno.com Exchange API</Description>
     <Authors>Louis Lewis</Authors>
-    <Version>0.0.9-alpha</Version>
+    <Version>0.0.10-alpha</Version>
     <PackageTags>luno; bitx;</PackageTags>
     <PackageProjectUrl>https://github.com/louislewis2/luno_integration</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/louislewis2/luno_integration/blob/master/License.md</PackageLicenseUrl>

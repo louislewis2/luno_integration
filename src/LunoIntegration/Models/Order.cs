@@ -1,6 +1,7 @@
 ﻿namespace LunoIntegration.Models
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     using LunoIntegration.Enums;
 
@@ -21,9 +22,11 @@
         public double CompletedTimeStamp { get; set; }
 
         [JsonProperty("type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public OrderTypes Type { get; set; }
 
         [JsonProperty("state")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public OrderStates State { get; set; }
 
         [JsonProperty("limit_price")]
