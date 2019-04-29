@@ -35,6 +35,15 @@
 
         #region Constructor
 
+        /// <summary>
+        /// This Will Work If You Are Only Requesting Public Data,
+        /// Which Does Not Require Authentication
+        /// </summary>
+        public LunoClient()
+        {
+            this.httpClient = new HttpClient { BaseAddress = new Uri(baseUrl) };
+        }
+
         public LunoClient(string key, string secret)
         {
             this.key = key;
@@ -87,8 +96,12 @@
 
             var finalResourceUrl = string.IsNullOrWhiteSpace(queryString) ? string.Format("api/{0}{1}", this.version, resourceUrl) : string.Format("api/{0}{1}{2}", this.version, resourceUrl, queryString);
 
-            this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
-                Convert.ToBase64String(ASCIIEncoding.ASCII.GetBytes($"{this.key}:{this.secret}")));
+            if (!string.IsNullOrWhiteSpace(value: this.key))
+            {
+                this.httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                    Convert.ToBase64String(ASCIIEncoding.ASCII.GetBytes($"{this.key}:{this.secret}")));
+            }
+
             this.httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Luno_Integration_Client", "0.0.1"));
 
             var requestResult = await this.httpClient.GetAsync(finalResourceUrl);
